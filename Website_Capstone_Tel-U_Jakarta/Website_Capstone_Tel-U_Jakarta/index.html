@@ -1,0 +1,2987 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CAPSY — Capstone System | Telkom University Jakarta</title>
+  <meta name="description"
+    content="CAPSY - Capstone System. One Platform for Everyone Capstone Journey. Platform manajemen matakuliah Capstone Project Telkom University Jakarta.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --red: #E31E24;
+      --red-dark: #B01619;
+      --red-light: #FF3B41;
+      --red-pale: #FFF0F0;
+      --red-soft: #FFE4E4;
+      --gray-900: #7d7676;
+      --gray-800: #6c6868;
+      --gray-700: #4A4A4A;
+      --gray-500: #7A7A7A;
+      --gray-300: #D4D4D4;
+      --gray-100: #F5F5F5;
+      --gray-50: #FAFAFA;
+      --white: #FFFFFF;
+      --shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.08);
+      --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.10);
+      --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.12);
+      --shadow-red: 0 8px 32px rgba(227, 30, 36, 0.25);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--white);
+      color: var(--gray-900);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── TOPBAR ──────────────────────────────────────────────── */
+    .topbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.97);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+      box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
+    }
+
+    .topbar-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 40px;
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .brand-logo {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      overflow: hidden;
+      flex-shrink: 0;
+      background: var(--white);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4px;
+    }
+
+    .brand-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .brand-mark {
+      width: 44px;
+      height: 44px;
+      background: linear-gradient(135deg, var(--red), var(--red-dark));
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      font-weight: 900;
+      color: var(--white);
+      letter-spacing: -1px;
+      box-shadow: 0 4px 14px rgba(227, 30, 36, 0.35);
+      flex-shrink: 0;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-name {
+      font-size: 19px;
+      font-weight: 800;
+      color: var(--gray-900);
+      letter-spacing: -0.5px;
+      line-height: 1;
+    }
+
+    .brand-name span {
+      color: var(--red);
+    }
+
+    .brand-sub {
+      font-size: 10.5px;
+      color: var(--gray-500);
+      font-weight: 500;
+      letter-spacing: 0.3px;
+      line-height: 1;
+      margin-top: 3px;
+    }
+
+    /* ── TOPBAR NAV (center) ─────────────────────────────────── */
+    .topbar-nav {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .nav-link {
+      padding: 8px 14px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--gray-700);
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: none;
+      background: none;
+      font-family: 'Inter', sans-serif;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-link:hover {
+      background: var(--gray-100);
+      color: var(--gray-900);
+    }
+
+    .nav-link.active {
+      background: var(--red-pale);
+      color: var(--red);
+    }
+
+    /* ── TOPBAR RIGHT ────────────────────────────────────────── */
+    .topbar-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .univ-badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      background: var(--gray-100);
+      border: 1px solid var(--gray-300);
+      border-radius: 20px;
+      font-size: 11.5px;
+      color: var(--gray-700);
+      font-weight: 500;
+    }
+
+    .univ-badge-dot {
+      width: 7px;
+      height: 7px;
+      background: var(--red);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* Login dropdown button */
+    .login-trigger {
+      position: relative;
+    }
+
+    .btn-login-topbar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      background: linear-gradient(135deg, var(--red), var(--red-dark));
+      color: #fff;
+      font-size: 13.5px;
+      font-weight: 700;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      font-family: 'Inter', sans-serif;
+      box-shadow: 0 4px 14px rgba(227, 30, 36, 0.3);
+      letter-spacing: 0.2px;
+    }
+
+    .btn-login-topbar:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(227, 30, 36, 0.4);
+    }
+
+    .btn-login-topbar .chevron {
+      font-size: 10px;
+      transition: transform 0.2s;
+    }
+
+    .login-trigger.open .btn-login-topbar .chevron {
+      transform: rotate(180deg);
+    }
+
+    /* Login dropdown menu */
+    .login-dropdown {
+      position: absolute;
+      top: calc(100% + 10px);
+      right: 0;
+      width: 240px;
+      background: var(--white);
+      border: 1px solid var(--gray-300);
+      border-radius: 16px;
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.15);
+      overflow: hidden;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-8px);
+      transition: all 0.22s cubic-bezier(0.34, 1.4, 0.64, 1);
+      z-index: 200;
+    }
+
+    .login-trigger.open .login-dropdown {
+      opacity: 1;
+      pointer-events: all;
+      transform: translateY(0);
+    }
+
+    .login-dropdown-header {
+      background: linear-gradient(135deg, var(--red), var(--red-dark));
+      padding: 12px 16px;
+      font-size: 11px;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.75);
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+    }
+
+    .login-dropdown-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 13px 16px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      border: none;
+      background: none;
+      width: 100%;
+      font-family: 'Inter', sans-serif;
+      text-align: left;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+    }
+
+    .login-dropdown-item:last-child {
+      border-bottom: none;
+    }
+
+    .login-dropdown-item:hover {
+      background: var(--red-pale);
+    }
+
+    .login-dropdown-item:hover .dropdown-icon-wrap {
+      background: var(--red);
+      color: #fff;
+    }
+
+    .dropdown-icon-wrap {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: var(--red-pale);
+      border: 1px solid var(--red-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 17px;
+      flex-shrink: 0;
+      transition: all 0.15s;
+    }
+
+    .dropdown-item-info {
+      flex: 1;
+    }
+
+    .dropdown-item-name {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--gray-900);
+      line-height: 1;
+    }
+
+    .dropdown-item-sub {
+      font-size: 10.5px;
+      color: var(--gray-500);
+      margin-top: 2px;
+    }
+
+    .dropdown-item-arrow {
+      font-size: 12px;
+      color: var(--gray-300);
+      transition: transform 0.15s;
+    }
+
+    .login-dropdown-item:hover .dropdown-item-arrow {
+      transform: translateX(3px);
+      color: var(--red);
+    }
+
+    /* ── HERO (Campus Image) ──────────────────────────────────── */
+    .hero {
+      padding-top: 68px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-stripe {
+      position: relative;
+      min-height: 520px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    /* Campus background image */
+    .hero-bg-img {
+      position: absolute;
+      inset: 0;
+      background-image: url('../assets/Kampus-Minangkabau.webp');
+      background-size: cover;
+      background-position: center 30%;
+      background-repeat: no-repeat;
+      filter: brightness(0.55) saturate(1.1);
+      transform: scale(1.03);
+      transition: transform 8s ease;
+    }
+
+    .hero:hover .hero-bg-img {
+      transform: scale(1.0);
+    }
+
+    /* Red gradient overlay */
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(160deg,
+          rgba(176, 22, 25, 0.72) 0%,
+          rgba(227, 30, 36, 0.55) 40%,
+          rgba(30, 10, 10, 0.65) 100%);
+    }
+
+    /* Bottom fade to white */
+    .hero-fade-bottom {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 120px;
+      background: linear-gradient(to top, var(--white), transparent);
+    }
+
+    /* Pattern texture */
+    .hero-pattern {
+      position: absolute;
+      inset: 0;
+      background-image: repeating-linear-gradient(45deg,
+          rgba(255, 255, 255, 0.025) 0px,
+          rgba(255, 255, 255, 0.025) 1px,
+          transparent 1px,
+          transparent 24px);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 3;
+      text-align: center;
+      max-width: 800px;
+      padding: 80px 40px 100px;
+    }
+
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: rgba(255, 255, 255, 0.95);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 6px 16px;
+      border-radius: 20px;
+      margin-bottom: 24px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      backdrop-filter: blur(8px);
+    }
+
+    .hero-pill::before {
+      content: '';
+      width: 7px;
+      height: 7px;
+      background: #4DF5A0;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #4DF5A0;
+      animation: blink 2s ease-in-out infinite;
+    }
+
+    @keyframes blink {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0.3;
+      }
+    }
+
+    .hero-title {
+      font-size: clamp(64px, 11vw, 108px);
+      font-weight: 900;
+      color: var(--white);
+      letter-spacing: -5px;
+      line-height: 0.9;
+      margin-bottom: 12px;
+      text-shadow: 0 4px 32px rgba(0, 0, 0, 0.35);
+    }
+
+    .hero-acronym {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.6);
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+
+    .hero-tagline {
+      font-size: clamp(16px, 2.3vw, 21px);
+      color: rgba(255, 255, 255, 0.95);
+      font-weight: 400;
+      line-height: 1.55;
+      max-width: 560px;
+      margin: 0 auto 32px;
+    }
+
+    .hero-tagline strong {
+      font-weight: 700;
+      color: #fff;
+    }
+
+    /* Hero CTA scroll hint */
+    .hero-scroll-hint {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      color: rgba(255, 255, 255, 0.45);
+      font-size: 10.5px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      animation: bounce 2s ease-in-out infinite;
+    }
+
+    .hero-scroll-hint svg {
+      width: 18px;
+      height: 18px;
+      stroke: rgba(255, 255, 255, 0.4);
+    }
+
+    @keyframes bounce {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(6px);
+      }
+    }
+
+    /* ── FEATURES SECTION ────────────────────────────────────── */
+    .features-section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 24px 32px 80px;
+    }
+
+    .section-label {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+
+    .section-label-text {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--gray-500);
+      padding: 0 8px;
+      position: relative;
+    }
+
+    .section-label-text::before,
+    .section-label-text::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      width: 48px;
+      height: 1px;
+      background: var(--gray-300);
+    }
+
+    .section-label-text::before {
+      right: 100%;
+    }
+
+    .section-label-text::after {
+      left: 100%;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .feature-card {
+      background: var(--white);
+      border: 1.5px solid var(--gray-100);
+      border-radius: 22px;
+      padding: 36px 24px 30px;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.34, 1.4, 0.64, 1);
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--red);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.35s ease;
+      border-radius: 3px 3px 0 0;
+    }
+
+    .feature-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(227, 30, 36, 0.04), transparent 60%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      border-radius: 20px;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-10px);
+      border-color: rgba(227, 30, 36, 0.25);
+      box-shadow: var(--shadow-lg), 0 0 0 1px rgba(227, 30, 36, 0.08);
+    }
+
+    .feature-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .feature-card:hover::after {
+      opacity: 1;
+    }
+
+    .feature-card:active {
+      transform: translateY(-4px);
+    }
+
+    /* Coming soon card */
+    .feature-card.coming-soon {
+      background: linear-gradient(135deg, var(--gray-50), var(--white));
+      opacity: 0.75;
+    }
+
+    .feature-card.coming-soon:hover {
+      opacity: 1;
+    }
+
+    .feature-icon {
+      width: 72px;
+      height: 72px;
+      border-radius: 20px;
+      background: var(--red-pale);
+      border: 1.5px solid var(--red-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      margin: 0 auto 20px;
+      transition: all 0.3s ease;
+      position: relative;
+      z-index: 1;
+    }
+
+    .feature-card:hover .feature-icon {
+      background: var(--red);
+      border-color: var(--red);
+      transform: scale(1.1) rotate(-5deg);
+      box-shadow: var(--shadow-red);
+    }
+
+    .feature-card.coming-soon .feature-icon {
+      background: var(--gray-100);
+      border-color: var(--gray-300);
+    }
+
+    .feature-card.coming-soon:hover .feature-icon {
+      background: var(--gray-700);
+      border-color: var(--gray-700);
+    }
+
+    .feature-name {
+      font-size: 15.5px;
+      font-weight: 800;
+      color: var(--gray-900);
+      margin-bottom: 8px;
+      position: relative;
+      z-index: 1;
+      transition: color 0.2s;
+      letter-spacing: -0.3px;
+    }
+
+    .feature-card:hover .feature-name {
+      color: var(--red);
+    }
+
+    .feature-desc {
+      font-size: 12.5px;
+      color: var(--gray-500);
+      line-height: 1.6;
+      position: relative;
+      z-index: 1;
+    }
+
+    .feature-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      margin-top: 18px;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--red);
+      opacity: 0;
+      transform: translateY(6px);
+      transition: all 0.25s ease;
+      position: relative;
+      z-index: 1;
+    }
+
+    .feature-card:hover .feature-cta {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .feature-badge-cs {
+      display: inline-block;
+      margin-top: 14px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: var(--gray-500);
+      background: var(--gray-100);
+      border: 1px solid var(--gray-300);
+      padding: 3px 10px;
+      border-radius: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── INFO STRIP ──────────────────────────────────────────── */
+    .info-strip {
+      background: linear-gradient(135deg, #5c0b0d 0%, #991316 55%, #b01619 100%);
+      padding: 0;
+      /* overflow: hidden; Removed to allow dropdowns */
+    }
+
+    .info-strip-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      align-items: stretch;
+    }
+
+    .info-item {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 20px 28px;
+      border-right: 1px solid rgba(255, 255, 255, 0.07);
+      transition: background 0.2s;
+    }
+
+    .info-item:last-child {
+      border-right: none;
+    }
+
+    .info-item:hover {
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    /* Location Dropdown */
+    .location-trigger {
+      position: relative;
+      cursor: pointer;
+    }
+    
+    .location-dropdown {
+      position: absolute;
+      bottom: calc(100% + 5px);
+      left: 50%;
+      transform: translateX(-50%) translateY(8px);
+      width: 220px;
+      background: var(--white);
+      border: 1px solid var(--gray-300);
+      border-radius: 12px;
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.15);
+      overflow: hidden;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.22s cubic-bezier(0.34, 1.4, 0.64, 1);
+      z-index: 200;
+      text-align: left;
+    }
+    
+    .location-trigger.open .location-dropdown {
+      opacity: 1;
+      pointer-events: all;
+      transform: translateX(-50%) translateY(0);
+    }
+    
+    .location-trigger .chevron {
+      font-size: 8px;
+      margin-left: 4px;
+      display: inline-block;
+      transition: transform 0.2s;
+    }
+    
+    .location-trigger.open .chevron {
+      transform: rotate(180deg);
+    }
+    
+    .location-dropdown-header {
+      background: linear-gradient(135deg, var(--red), var(--red-dark));
+      padding: 10px 16px;
+      font-size: 11px;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.9);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    
+    .location-dropdown-item {
+      display: block;
+      padding: 12px 16px;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(0,0,0,0.04);
+      transition: background 0.15s;
+    }
+    
+    .location-dropdown-item:hover {
+      background: var(--red-pale);
+    }
+    
+    .location-dropdown-item:last-child {
+      border-bottom: none;
+    }
+    
+    .location-dropdown-item .dropdown-item-name {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--gray-900);
+      margin-bottom: 2px;
+    }
+    
+    .location-dropdown-item .dropdown-item-sub {
+      font-size: 11.5px;
+      color: var(--gray-500);
+    }
+
+    .info-icon-wrap {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: rgba(227, 30, 36, 0.2);
+      border: 1px solid rgba(227, 30, 36, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    .info-text {
+      flex: 1;
+    }
+
+    .info-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.45);
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      margin-bottom: 3px;
+    }
+
+    .info-value {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.92);
+      letter-spacing: -0.2px;
+    }
+
+    /* ── ANNOUNCEMENT TICKER ─────────────────────────────────── */
+    .ticker-bar {
+      background: var(--red);
+      padding: 9px 0;
+      overflow: hidden;
+    }
+
+    .ticker-inner {
+      display: flex;
+      align-items: center;
+    }
+
+    .ticker-label {
+      background: var(--red-dark);
+      padding: 2px 18px;
+      font-size: 11px;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      white-space: nowrap;
+      flex-shrink: 0;
+      border-radius: 0 6px 6px 0;
+      margin-right: 24px;
+    }
+
+    .ticker-track {
+      display: flex;
+      gap: 0;
+      animation: tickerScroll 30s linear infinite;
+      white-space: nowrap;
+    }
+
+    .ticker-track:hover {
+      animation-play-state: paused;
+    }
+
+    .ticker-item {
+      font-size: 12.5px;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.9);
+      padding: 0 40px 0 0;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .ticker-sep {
+      color: rgba(255, 255, 255, 0.35);
+      margin: 0 8px 0 0;
+      font-size: 14px;
+    }
+
+    @keyframes tickerScroll {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    /* ── FOOTER ──────────────────────────────────────────────── */
+    .page-footer {
+      background: #0d0d14;
+      padding: 0;
+    }
+
+    .footer-main {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 48px 40px 32px;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 48px;
+    }
+
+    .footer-brand-col .brand-mark-foot {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .footer-logo {
+      width: 42px;
+      height: 42px;
+      background: var(--white);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      padding: 4px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .footer-brand-name {
+      font-size: 20px;
+      font-weight: 800;
+      color: rgba(255, 255, 255, 0.9);
+      letter-spacing: -0.5px;
+    }
+
+    .footer-brand-name span {
+      color: var(--red);
+    }
+
+    .footer-brand-sub {
+      font-size: 10.5px;
+      color: rgba(255, 255, 255, 0.35);
+      margin-top: 2px;
+    }
+
+    .footer-desc {
+      font-size: 12.5px;
+      color: rgba(255, 255, 255, 0.4);
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .footer-makers {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 14px 16px;
+    }
+
+    .footer-makers-title {
+      font-size: 10px;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.3);
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .footer-maker-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .footer-maker-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .footer-maker-avatar {
+      width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--red), var(--red-dark));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 700;
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    .footer-maker-name {
+      font-size: 12px;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .footer-maker-role {
+      font-size: 10.5px;
+      color: rgba(255, 255, 255, 0.35);
+      margin-top: 1px;
+    }
+
+    .footer-col-title {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.5);
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-links a {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.45);
+      text-decoration: none;
+      transition: color 0.15s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+    }
+
+    .footer-links a:hover {
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .footer-links a .fl-icon {
+      font-size: 14px;
+    }
+
+    .footer-contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .footer-contact-icon {
+      width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      background: rgba(227, 30, 36, 0.15);
+      border: 1px solid rgba(227, 30, 36, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      flex-shrink: 0;
+    }
+
+    .footer-contact-label {
+      font-size: 10.5px;
+      color: rgba(255, 255, 255, 0.3);
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      font-weight: 600;
+    }
+
+    .footer-contact-val {
+      font-size: 12.5px;
+      color: rgba(255, 255, 255, 0.6);
+      margin-top: 2px;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 18px 40px;
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer-bottom-text {
+      font-size: 11.5px;
+      color: rgba(255, 255, 255, 0.25);
+    }
+
+    .footer-bottom-text strong {
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .footer-bottom-badges {
+      display: flex;
+      gap: 8px;
+    }
+
+    .footer-badge {
+      font-size: 10px;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.3);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 3px 10px;
+      border-radius: 20px;
+    }
+
+    /* ── LOGIN PANEL ─────────────────────────────────────────── */
+    .login-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 500;
+      display: flex;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .login-overlay.visible {
+      pointer-events: all;
+      opacity: 1;
+    }
+
+    .overlay-bg {
+      position: absolute;
+      inset: 0;
+      background: rgba(15, 15, 25, 0.6);
+      backdrop-filter: blur(8px);
+    }
+
+    .login-panel {
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 460px;
+      max-width: 100vw;
+      background: var(--white);
+      display: flex;
+      flex-direction: column;
+      transform: translateX(100%);
+      transition: transform 0.38s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow-y: auto;
+      box-shadow: -12px 0 48px rgba(0, 0, 0, 0.2);
+    }
+
+    .login-overlay.visible .login-panel {
+      transform: translateX(0);
+    }
+
+    .panel-topbar {
+      background: linear-gradient(135deg, var(--red), var(--red-dark));
+      padding: 28px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .panel-topbar::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(45deg,
+          rgba(255, 255, 255, 0.04) 0px,
+          rgba(255, 255, 255, 0.04) 1px,
+          transparent 1px,
+          transparent 18px);
+    }
+
+    .panel-top-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      z-index: 1;
+    }
+
+    .panel-top-icon {
+      width: 48px;
+      height: 48px;
+      background: rgba(255, 255, 255, 0.18);
+      border: 1.5px solid rgba(255, 255, 255, 0.3);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+    }
+
+    .panel-top-info {
+      z-index: 1;
+    }
+
+    .panel-top-role {
+      font-size: 18px;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.3px;
+    }
+
+    .panel-top-sub {
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.6);
+      margin-top: 3px;
+      font-weight: 500;
+    }
+
+    .panel-close {
+      z-index: 1;
+      width: 36px;
+      height: 36px;
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 10px;
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 16px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+      flex-shrink: 0;
+    }
+
+    .panel-close:hover {
+      background: rgba(255, 255, 255, 0.25);
+      color: #fff;
+    }
+
+    .panel-body {
+      flex: 1;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .panel-greeting {
+      margin-bottom: 28px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--gray-100);
+    }
+
+    .panel-greeting h2 {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--gray-900);
+      letter-spacing: -0.5px;
+      margin-bottom: 6px;
+    }
+
+    .panel-greeting p {
+      font-size: 13px;
+      color: var(--gray-500);
+      line-height: 1.55;
+    }
+
+    .f-group {
+      margin-bottom: 18px;
+    }
+
+    .f-label {
+      display: block;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--gray-800);
+      margin-bottom: 7px;
+    }
+
+    .f-label .req {
+      color: var(--red);
+      margin-left: 2px;
+    }
+
+    .f-input {
+      width: 100%;
+      padding: 11px 14px;
+      border: 1.5px solid var(--gray-300);
+      border-radius: 10px;
+      font-size: 14px;
+      color: var(--gray-900);
+      font-family: 'Inter', sans-serif;
+      background: var(--white);
+      transition: all 0.2s;
+      outline: none;
+    }
+
+    .f-input:focus {
+      border-color: var(--red);
+      box-shadow: 0 0 0 3px rgba(227, 30, 36, 0.12);
+    }
+
+    .f-input::placeholder {
+      color: var(--gray-300);
+    }
+
+    .f-pw-wrap {
+      position: relative;
+    }
+
+    .f-pw-wrap .f-input {
+      padding-right: 44px;
+    }
+
+    .f-pw-toggle {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+      color: var(--gray-500);
+      transition: color 0.2s;
+      padding: 4px;
+    }
+
+    .f-pw-toggle:hover {
+      color: var(--gray-900);
+    }
+
+    .f-error {
+      background: #FFF5F5;
+      border: 1.5px solid #FEC5C5;
+      border-radius: 10px;
+      padding: 11px 14px;
+      font-size: 12.5px;
+      color: #C53030;
+      display: none;
+      align-items: flex-start;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .f-error.show {
+      display: flex;
+    }
+
+    .btn-login-submit {
+      width: 100%;
+      padding: 13px 20px;
+      background: linear-gradient(135deg, var(--red), var(--red-dark));
+      color: #fff;
+      font-size: 14.5px;
+      font-weight: 700;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-family: 'Inter', sans-serif;
+      box-shadow: 0 4px 16px rgba(227, 30, 36, 0.3);
+      letter-spacing: 0.2px;
+    }
+
+    .btn-login-submit:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(227, 30, 36, 0.4);
+    }
+
+    .btn-login-submit:disabled {
+      opacity: 0.65;
+      cursor: not-allowed;
+    }
+
+    .demo-sep {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 24px 0 16px;
+    }
+
+    .demo-sep-line {
+      flex: 1;
+      height: 1px;
+      background: var(--gray-100);
+    }
+
+    .demo-sep-text {
+      font-size: 10.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--gray-500);
+      white-space: nowrap;
+    }
+
+    .demo-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .demo-btn {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 12px;
+      background: var(--gray-50);
+      border: 1.5px solid var(--gray-100);
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: 'Inter', sans-serif;
+      text-align: left;
+    }
+
+    .demo-btn:hover {
+      background: var(--red-pale);
+      border-color: rgba(227, 30, 36, 0.25);
+    }
+
+    .demo-btn-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--red), var(--red-dark));
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .demo-btn-name {
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--gray-800);
+      line-height: 1;
+    }
+
+    .demo-btn-email {
+      font-size: 11px;
+      color: var(--gray-500);
+      font-family: monospace;
+      margin-top: 2px;
+    }
+
+    .demo-btn-chip {
+      margin-left: auto;
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--red);
+      background: var(--red-pale);
+      border: 1px solid var(--red-soft);
+      padding: 2px 8px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+
+    .panel-foot {
+      padding: 16px 32px;
+      background: var(--gray-50);
+      border-top: 1px solid var(--gray-100);
+      font-size: 11px;
+      color: var(--gray-500);
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    /* ── MODAL OVERLAY ───────────────────────────────────────── */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .modal-overlay.visible {
+      pointer-events: all;
+      opacity: 1;
+    }
+
+    .modal-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(10, 10, 20, 0.65);
+      backdrop-filter: blur(10px);
+    }
+
+    .modal-box {
+      position: relative;
+      z-index: 1;
+      background: var(--white);
+      border-radius: 24px;
+      max-width: 680px;
+      width: 100%;
+      max-height: 85vh;
+      overflow-y: auto;
+      box-shadow: 0 32px 80px rgba(0, 0, 0, 0.25);
+      transform: scale(0.95) translateY(12px);
+      transition: all 0.3s cubic-bezier(0.34, 1.4, 0.64, 1);
+    }
+
+    .modal-overlay.visible .modal-box {
+      transform: scale(1) translateY(0);
+    }
+
+    .modal-header {
+      background: linear-gradient(135deg, var(--red), var(--red-dark));
+      padding: 28px 32px;
+      border-radius: 24px 24px 0 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .modal-header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(45deg,
+          rgba(255, 255, 255, 0.04) 0px,
+          rgba(255, 255, 255, 0.04) 1px,
+          transparent 1px,
+          transparent 18px);
+    }
+
+    .modal-header-content {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .modal-header-icon {
+      width: 52px;
+      height: 52px;
+      background: rgba(255, 255, 255, 0.18);
+      border: 1.5px solid rgba(255, 255, 255, 0.3);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      flex-shrink: 0;
+    }
+
+    .modal-title-text {
+      font-size: 22px;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.5px;
+    }
+
+    .modal-subtitle-text {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.6);
+      margin-top: 3px;
+    }
+
+    .modal-close-btn {
+      margin-left: auto;
+      width: 36px;
+      height: 36px;
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 10px;
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 16px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+      flex-shrink: 0;
+    }
+
+    .modal-close-btn:hover {
+      background: rgba(255, 255, 255, 0.25);
+      color: #fff;
+    }
+
+    .modal-body {
+      padding: 32px;
+    }
+
+    /* Tentang styles */
+    .about-intro {
+      font-size: 13.5px;
+      color: var(--gray-700);
+      line-height: 1.8;
+      margin-bottom: 28px;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .about-card {
+      background: var(--red-pale);
+      border: 1px solid var(--red-soft);
+      border-radius: 14px;
+      padding: 18px;
+    }
+
+    .about-card-icon {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .about-card-title {
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--red-dark);
+      margin-bottom: 6px;
+    }
+
+    .about-card-text {
+      font-size: 12px;
+      color: var(--gray-700);
+      line-height: 1.6;
+    }
+
+    .makers-section {
+      border-top: 1px solid var(--gray-100);
+      padding-top: 24px;
+    }
+
+    .makers-title {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--gray-500);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .maker-card {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px;
+      background: var(--gray-50);
+      border: 1px solid var(--gray-100);
+      border-radius: 14px;
+      margin-bottom: 10px;
+    }
+
+    .maker-card:last-child {
+      margin-bottom: 0;
+    }
+
+    .maker-avatar {
+      width: 46px;
+      height: 46px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--red), var(--red-dark));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      font-weight: 800;
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    .maker-avatar.pic {
+      background: linear-gradient(135deg, #1a1a2e, #16213e);
+    }
+
+    .maker-name {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--gray-900);
+    }
+
+    .maker-role-tag {
+      display: inline-block;
+      font-size: 10.5px;
+      font-weight: 600;
+      color: var(--red);
+      background: var(--red-pale);
+      border: 1px solid var(--red-soft);
+      padding: 2px 8px;
+      border-radius: 20px;
+      margin-top: 4px;
+    }
+
+    /* Feedback form */
+    .feedback-stars {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .star-btn {
+      width: 40px;
+      height: 40px;
+      background: var(--gray-100);
+      border: 1.5px solid var(--gray-300);
+      border-radius: 10px;
+      font-size: 20px;
+      cursor: pointer;
+      transition: all 0.15s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .star-btn:hover,
+    .star-btn.active {
+      background: #FFF8E0;
+      border-color: #F59E0B;
+      transform: scale(1.1);
+    }
+
+    .feedback-sent {
+      text-align: center;
+      padding: 32px;
+    }
+
+    .feedback-sent-icon {
+      font-size: 52px;
+      margin-bottom: 16px;
+    }
+
+    .feedback-sent-title {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--gray-900);
+      margin-bottom: 8px;
+    }
+
+    .feedback-sent-sub {
+      font-size: 13px;
+      color: var(--gray-500);
+    }
+
+    /* FAQ */
+    .faq-item {
+      border: 1px solid var(--gray-100);
+      border-radius: 12px;
+      margin-bottom: 10px;
+      overflow: hidden;
+    }
+
+    .faq-q {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 18px;
+      cursor: pointer;
+      background: var(--gray-50);
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--gray-900);
+      gap: 12px;
+      transition: background 0.15s;
+    }
+
+    .faq-q:hover {
+      background: var(--red-pale);
+      color: var(--red);
+    }
+
+    .faq-chevron {
+      font-size: 11px;
+      color: var(--gray-500);
+      transition: transform 0.2s;
+      flex-shrink: 0;
+    }
+
+    .faq-item.open .faq-chevron {
+      transform: rotate(180deg);
+    }
+
+    .faq-a {
+      display: none;
+      padding: 14px 18px;
+      font-size: 13px;
+      color: var(--gray-700);
+      line-height: 1.7;
+      border-top: 1px solid var(--gray-100);
+    }
+
+    .faq-item.open .faq-a {
+      display: block;
+    }
+
+    /* Coming Soon */
+    .coming-soon-content {
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .cs-icon {
+      font-size: 64px;
+      margin-bottom: 20px;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    .cs-title {
+      font-size: 24px;
+      font-weight: 900;
+      color: var(--gray-900);
+      letter-spacing: -0.5px;
+      margin-bottom: 10px;
+    }
+
+    .cs-sub {
+      font-size: 14px;
+      color: var(--gray-500);
+      line-height: 1.6;
+      margin-bottom: 28px;
+    }
+
+    .cs-features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 28px;
+      text-align: left;
+    }
+
+    .cs-feat-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 14px;
+      background: var(--gray-50);
+      border: 1px solid var(--gray-100);
+      border-radius: 10px;
+      font-size: 12.5px;
+      color: var(--gray-700);
+      font-weight: 500;
+    }
+
+    .cs-feat-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--red);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* Toast */
+    #toast-container {
+      position: fixed;
+      top: 84px;
+      right: 24px;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .toast {
+      background: #fff;
+      color: var(--gray-900);
+      border: 1px solid var(--gray-300);
+      padding: 12px 18px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 500;
+      box-shadow: var(--shadow-md);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 280px;
+      animation: toastIn 0.3s ease;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .toast-success {
+      border-left: 4px solid #22c55e;
+    }
+
+    .toast-error {
+      border-left: 4px solid var(--red);
+    }
+
+    .toast-info {
+      border-left: 4px solid #3b82f6;
+    }
+
+    @keyframes toastIn {
+      from {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    /* ── RESPONSIVE ──────────────────────────────────────────── */
+    @media (max-width: 960px) {
+      .features-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .footer-main {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .topbar-nav {
+        display: none;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .topbar-inner {
+        padding: 0 20px;
+      }
+
+      .info-strip-inner {
+        flex-direction: column;
+      }
+
+      .info-item {
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+      }
+
+      .footer-main {
+        grid-template-columns: 1fr;
+        padding: 32px 24px;
+      }
+
+      .footer-bottom {
+        padding: 16px 24px;
+      }
+
+      .features-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+      }
+
+      .univ-badge span:not(.univ-badge-dot) {
+        display: none;
+      }
+
+      .cs-features {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .features-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .login-panel {
+        width: 100%;
+      }
+
+      .modal-box {
+        border-radius: 16px;
+      }
+
+      .hero-content {
+        padding: 60px 20px 80px;
+      }
+
+      .btn-login-topbar span:first-child {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="toast-container"></div>
+
+  <!-- ═══ TOPBAR ════════════════════════════════════════════════ -->
+  <header class="topbar">
+    <div class="topbar-inner">
+      <!-- Brand -->
+      <a class="brand" href="#">
+        <div class="brand-logo">
+          <img src="assets/Logo Vertikal Telkom University.png" alt="Telkom University Logo">
+        </div>
+        <div class="brand-text">
+          <div class="brand-name">CAP<span>SY</span></div>
+          <div class="brand-sub">Capstone System</div>
+        </div>
+      </a>
+
+      <!-- Center Nav -->
+      <nav class="topbar-nav" id="topbar-nav">
+        <button class="nav-link" onclick="openModal('modal-tentang')" id="nav-tentang">
+          ℹ️ Tentang
+        </button>
+        <button class="nav-link" onclick="openModal('modal-keluhan')" id="nav-keluhan">
+          💬 Keluhan
+        </button>
+        <button class="nav-link" onclick="openModal('modal-bantuan')" id="nav-bantuan">
+          ❓ Bantuan
+        </button>
+        <button class="nav-link" onclick="openModal('modal-comingsoon')" id="nav-cs">
+          🚀 Coming Soon
+        </button>
+      </nav>
+
+      <!-- Right -->
+      <div class="topbar-right">
+        <div class="univ-badge">
+          <div class="univ-badge-dot"></div>
+          <span>Telkom University Jakarta</span>
+        </div>
+
+        <!-- LOGIN ROLE DROPDOWN -->
+        <div class="login-trigger" id="login-trigger">
+          <button class="btn-login-topbar" onclick="toggleLoginDropdown()" id="btn-masuk-topbar">
+            <span>🔐</span>
+            <span>Masuk</span>
+            <span class="chevron">▼</span>
+          </button>
+          <div class="login-dropdown" id="login-dropdown">
+            <div class="login-dropdown-header">Pilih Role Masuk</div>
+            <button class="login-dropdown-item" onclick="openLogin('mahasiswa'); closeDropdown()">
+              <div class="dropdown-icon-wrap">🎓</div>
+              <div class="dropdown-item-info">
+                <div class="dropdown-item-name">Mahasiswa</div>
+                <div class="dropdown-item-sub">Login sebagai mahasiswa</div>
+              </div>
+              <span class="dropdown-item-arrow">›</span>
+            </button>
+            <button class="login-dropdown-item" onclick="openLogin('dosen_pembimbing'); closeDropdown()">
+              <div class="dropdown-icon-wrap">👨‍🏫</div>
+              <div class="dropdown-item-info">
+                <div class="dropdown-item-name">Dosen Pembimbing</div>
+                <div class="dropdown-item-sub">Login sebagai dosen pembimbing</div>
+              </div>
+              <span class="dropdown-item-arrow">›</span>
+            </button>
+            <button class="login-dropdown-item" onclick="openLogin('dosen_penguji'); closeDropdown()">
+              <div class="dropdown-icon-wrap">📋</div>
+              <div class="dropdown-item-info">
+                <div class="dropdown-item-name">Dosen Penguji</div>
+                <div class="dropdown-item-sub">Login sebagai dosen penguji</div>
+              </div>
+              <span class="dropdown-item-arrow">›</span>
+            </button>
+            <button class="login-dropdown-item" onclick="openLogin('admin'); closeDropdown()">
+              <div class="dropdown-icon-wrap">⚙️</div>
+              <div class="dropdown-item-info">
+                <div class="dropdown-item-name">Administrator</div>
+                <div class="dropdown-item-sub">Login sebagai admin sistem</div>
+              </div>
+              <span class="dropdown-item-arrow">›</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ═══ HERO (Campus Photo Background) ═══════════════════════ -->
+  <section class="hero">
+    <div class="hero-stripe">
+      <div class="hero-bg-img"></div>
+      <div class="hero-overlay"></div>
+      <div class="hero-pattern"></div>
+      <div class="hero-fade-bottom"></div>
+
+      <div class="hero-content">
+        <div class="hero-pill" id="hero-semester-badge">Semester Ganjil 2026/2027 · Aktif</div>
+        <h1 class="hero-title">CAPSY</h1>
+        <span class="hero-acronym">Capstone Project System &nbsp;·&nbsp; Telkom University Jakarta</span>
+        <p class="hero-tagline">
+          <strong>One Platform for Everyone Capstone Journey.</strong><br>
+          Kelola laporan, penilaian, dan bimbingan Capstone Project dalam satu sistem terintegrasi.
+        </p>
+        <div class="hero-scroll-hint">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 5v14M5 12l7 7 7-7" />
+          </svg>
+          Scroll untuk explore
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FEATURES SECTION ══════════════════════════════════════ -->
+  <section class="features-section">
+    <div class="section-label">
+      <span class="section-label-text">Jelajahi CAPSY</span>
+    </div>
+
+    <div class="features-grid">
+      <!-- Tentang -->
+      <div class="feature-card" onclick="openModal('modal-tentang')" tabindex="0" role="button" id="card-tentang">
+        <div class="feature-icon">ℹ️</div>
+        <div class="feature-name">Tentang CAPSY</div>
+        <div class="feature-desc">Visi, misi, tujuan, fungsi aplikasi & informasi tim pengembang</div>
+        <div class="feature-cta">Selengkapnya <span>→</span></div>
+      </div>
+
+      <!-- Keluhan -->
+      <div class="feature-card" onclick="openModal('modal-keluhan')" tabindex="0" role="button" id="card-keluhan">
+        <div class="feature-icon">💬</div>
+        <div class="feature-name">Keluhan</div>
+        <div class="feature-desc">Sampaikan feedback dan saran untuk peningkatan aplikasi CAPSY</div>
+        <div class="feature-cta">Kirim Feedback <span>→</span></div>
+      </div>
+
+      <!-- Bantuan -->
+      <div class="feature-card" onclick="openModal('modal-bantuan')" tabindex="0" role="button" id="card-bantuan">
+        <div class="feature-icon">❓</div>
+        <div class="feature-name">Bantuan</div>
+        <div class="feature-desc">FAQ & panduan penggunaan CAPSY untuk semua peran pengguna</div>
+        <div class="feature-cta">Lihat FAQ <span>→</span></div>
+      </div>
+
+      <!-- Coming Soon -->
+      <div class="feature-card coming-soon" onclick="openModal('modal-comingsoon')" tabindex="0" role="button"
+        id="card-comingsoon">
+        <div class="feature-icon">🚀</div>
+        <div class="feature-name">Coming Soon</div>
+        <div class="feature-desc">Fitur-fitur baru sedang dalam pengembangan untuk CAPSY</div>
+        <div class="feature-badge-cs">Segera Hadir</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ INFO STRIP ════════════════════════════════════════════ -->
+  <div class="info-strip">
+    <div class="ticker-bar">
+      <div class="ticker-inner">
+        <div class="ticker-track" id="ticker-track">
+          <span class="ticker-item">🎓 Portal Capstone Project resmi Telkom University Jakarta <span
+              class="ticker-sep">•</span></span>
+          <span class="ticker-item">📅 Semester Ganjil 2026/2027 sedang aktif <span class="ticker-sep">•</span></span>
+          <span class="ticker-item">📋 Pastikan laporan diunggah sesuai jadwal yang ditentukan <span
+              class="ticker-sep">•</span></span>
+          <span class="ticker-item">🔐 Gunakan akun email institusi untuk login ke CAPSY <span
+              class="ticker-sep">•</span></span>
+          <span class="ticker-item">⭐ Nilai capstone project akan ditampilkan setelah proses penilaian selesai <span
+              class="ticker-sep">•</span></span>
+          <!-- duplicate for seamless loop -->
+          <span class="ticker-item">🎓 Portal Capstone Project resmi Telkom University Jakarta <span
+              class="ticker-sep">•</span></span>
+          <span class="ticker-item">📅 Semester Ganjil 2026/2027 sedang aktif <span class="ticker-sep">•</span></span>
+          <span class="ticker-item">📋 Pastikan laporan diunggah sesuai jadwal yang ditentukan <span
+              class="ticker-sep">•</span></span>
+          <span class="ticker-item">🔐 Gunakan akun email institusi untuk login ke CAPSY <span
+              class="ticker-sep">•</span></span>
+          <span class="ticker-item">⭐ Nilai capstone project akan ditampilkan setelah proses penilaian selesai <span
+              class="ticker-sep">•</span></span>
+        </div>
+      </div>
+    </div>
+    <div class="info-strip-inner">
+      <div class="info-item">
+        <div class="info-icon-wrap">🎓</div>
+        <div class="info-text">
+          <div class="info-label">Mata Kuliah</div>
+          <div class="info-value">Capstone Project</div>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon-wrap">📅</div>
+        <div class="info-text">
+          <div class="info-label">Periode Aktif</div>
+          <div class="info-value" id="info-semester-text">Semester Ganjil 2026/2027</div>
+        </div>
+      </div>
+      <a href="https://jakarta.telkomuniversity.ac.id/" target="_blank" class="info-item" style="text-decoration: none;">
+        <div class="info-icon-wrap">🏫</div>
+        <div class="info-text">
+          <div class="info-label">Kampus</div>
+          <div class="info-value">Telkom University Jakarta</div>
+        </div>
+      </a>
+      <div class="info-item location-trigger" id="location-trigger" onclick="toggleLocationDropdown()">
+        <div class="info-icon-wrap">📍</div>
+        <div class="info-text">
+          <div class="info-label" style="display:flex; align-items:center;">Lokasi <span class="chevron">▼</span></div>
+          <div class="info-value">Pilih Kampus Tel-U</div>
+        </div>
+        <div class="location-dropdown" id="location-dropdown">
+          <div class="location-dropdown-header">Pilih Lokasi Kampus</div>
+          <a href="https://jakarta.telkomuniversity.ac.id/kampus-daan-mogot/" target="_blank" class="location-dropdown-item">
+            <div class="dropdown-item-name">Kampus A</div>
+            <div class="dropdown-item-sub">Daan Mogot</div>
+          </a>
+          <a href="https://jakarta.telkomuniversity.ac.id/kampus-halimun/" target="_blank" class="location-dropdown-item">
+            <div class="dropdown-item-name">Kampus B</div>
+            <div class="dropdown-item-sub">Halimun</div>
+          </a>
+          <a href="https://jakarta.telkomuniversity.ac.id/kampus-minangkabau/" target="_blank" class="location-dropdown-item">
+            <div class="dropdown-item-name">Kampus C</div>
+            <div class="dropdown-item-sub">Minangkabau</div>
+          </a>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon-wrap">🔒</div>
+        <div class="info-text">
+          <div class="info-label">Sistem</div>
+          <div class="info-value">Internal · Terbatas</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ FOOTER ════════════════════════════════════════════════ -->
+  <footer class="page-footer">
+    <div class="footer-main">
+      <!-- Brand col -->
+      <div class="footer-brand-col">
+        <div class="brand-mark-foot">
+          <div class="footer-logo">
+            <img src="assets/Logo Vertikal Telkom University.png" alt="Telkom University Logo">
+          </div>
+          <div>
+            <div class="footer-brand-name">CAP<span>SY</span></div>
+            <div class="footer-brand-sub">Capstone System</div>
+          </div>
+        </div>
+        <p class="footer-desc">
+          Platform manajemen Capstone Project terintegrasi untuk mahasiswa, dosen pembimbing, dosen penguji, dan
+          administrator di Telkom University Jakarta.
+        </p>
+        <div class="footer-makers">
+          <div class="footer-makers-title">Tim Pengembang</div>
+          <div class="footer-maker-item">
+            <div class="footer-maker-avatar">AZ</div>
+            <div>
+              <div class="footer-maker-name">Aabid Ahmad Zubaid</div>
+              <div class="footer-maker-role">Developer & Designer</div>
+            </div>
+          </div>
+          <div class="footer-maker-item">
+            <div class="footer-maker-avatar">ZA</div>
+            <div>
+              <div class="footer-maker-name">Muhammad Zidan Alfarizi</div>
+              <div class="footer-maker-role">Developer</div>
+            </div>
+          </div>
+          <div class="footer-maker-item">
+            <div class="footer-maker-avatar pic">DS</div>
+            <div>
+              <div class="footer-maker-name">Deki Satria, S.T., M.Kom.</div>
+              <div class="footer-maker-role">Dosen PIC / Pembimbing</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Nav col -->
+      <div>
+        <div class="footer-col-title">Navigasi</div>
+        <ul class="footer-links">
+          <li><a onclick="openModal('modal-tentang')"><span class="fl-icon">ℹ️</span> Tentang CAPSY</a></li>
+          <li><a onclick="openModal('modal-keluhan')"><span class="fl-icon">💬</span> Keluhan & Feedback</a></li>
+          <li><a onclick="openModal('modal-bantuan')"><span class="fl-icon">❓</span> Bantuan & FAQ</a></li>
+          <li><a onclick="openModal('modal-comingsoon')"><span class="fl-icon">🚀</span> Coming Soon</a></li>
+          <li><a onclick="openLogin('mahasiswa'); closeDropdown()"><span class="fl-icon">🎓</span> Login Mahasiswa</a>
+          </li>
+          <li><a onclick="openLogin('admin'); closeDropdown()"><span class="fl-icon">⚙️</span> Login Admin</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact col -->
+      <div>
+        <div class="footer-col-title">Kontak Kampus</div>
+        <div class="footer-contact-item">
+          <div class="footer-contact-icon">📍</div>
+          <div>
+            <div class="footer-contact-label">Alamat</div>
+            <div class="footer-contact-val">Jl. Minangkabau Barat No.50, Pasar Manggis, Setiabudi, Jakarta Selatan 12970
+            </div>
+          </div>
+        </div>
+        <div class="footer-contact-item">
+          <div class="footer-contact-icon">🌐</div>
+          <div>
+            <div class="footer-contact-label">Website</div>
+            <div class="footer-contact-val">tuj.telkomuniversity.ac.id</div>
+          </div>
+        </div>
+        <div class="footer-contact-item">
+          <div class="footer-contact-icon">✉️</div>
+          <div>
+            <div class="footer-contact-label">Email</div>
+            <div class="footer-contact-val">info@tuj.ac.id</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-bottom-text">
+        © 2026 <strong>CAPSY</strong> — Capstone System &nbsp;·&nbsp; Telkom University Jakarta &nbsp;·&nbsp; Hak cipta
+        dilindungi
+      </div>
+      <div class="footer-bottom-badges">
+        <span class="footer-badge">v1.0.0</span>
+        <span class="footer-badge">Prototype 0</span>
+        <span class="footer-badge">Capstone Project</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ═══ LOGIN SIDE PANEL ══════════════════════════════════════ -->
+  <div class="login-overlay" id="login-overlay">
+    <div class="overlay-bg" onclick="closeLogin()"></div>
+    <div class="login-panel" id="login-panel">
+      <div class="panel-topbar">
+        <div class="panel-top-brand">
+          <div class="panel-top-icon" id="panel-icon"></div>
+          <div class="panel-top-info">
+            <div class="panel-top-role" id="panel-role-name"></div>
+            <div class="panel-top-sub">Login ke CAPSY</div>
+          </div>
+        </div>
+        <button class="panel-close" onclick="closeLogin()">✕</button>
+      </div>
+
+      <div class="panel-body">
+        <div class="panel-greeting">
+          <h2 id="panel-greeting-h">Selamat Datang!</h2>
+          <p id="panel-greeting-p">Masuk dengan akun yang diberikan oleh Administrator.</p>
+        </div>
+
+        <form id="login-form" onsubmit="handleLogin(event)">
+          <div class="f-group">
+            <label class="f-label" for="f-email">Email Institusi <span class="req">*</span></label>
+            <input type="email" id="f-email" class="f-input" placeholder="contoh@tuj.ac.id" required
+              autocomplete="username">
+          </div>
+
+          <div class="f-group">
+            <label class="f-label" for="f-password">Password <span class="req">*</span></label>
+            <div class="f-pw-wrap">
+              <input type="password" id="f-password" class="f-input" placeholder="Masukkan password" required
+                autocomplete="current-password">
+              <button type="button" class="f-pw-toggle" id="pw-toggle" onclick="togglePw()">👁</button>
+            </div>
+          </div>
+
+          <div class="f-error" id="f-error">
+            <span>⚠️</span>
+            <span id="f-error-msg"></span>
+          </div>
+
+          <button type="submit" class="btn-login-submit" id="btn-submit">
+            <span>Masuk ke CAPSY</span>
+            <span>→</span>
+          </button>
+        </form>
+
+        <div class="demo-sep">
+          <div class="demo-sep-line"></div>
+          <span class="demo-sep-text">Akun Demo</span>
+          <div class="demo-sep-line"></div>
+        </div>
+        <div class="demo-list" id="demo-list"></div>
+      </div>
+
+      <div class="panel-foot">
+        Akses terbatas — CAPSY · Telkom University Jakarta
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ MODAL: TENTANG ════════════════════════════════════════ -->
+  <div class="modal-overlay" id="modal-tentang">
+    <div class="modal-backdrop" onclick="closeModal('modal-tentang')"></div>
+    <div class="modal-box">
+      <div class="modal-header">
+        <div class="modal-header-content">
+          <div class="modal-header-icon">ℹ️</div>
+          <div>
+            <div class="modal-title-text">Tentang CAPSY</div>
+            <div class="modal-subtitle-text">Capstone System — Telkom University Jakarta</div>
+          </div>
+          <button class="modal-close-btn" onclick="closeModal('modal-tentang')">✕</button>
+        </div>
+      </div>
+      <div class="modal-body">
+        <p class="about-intro">
+          <strong>CAPSY (Capstone System)</strong> adalah platform manajemen matakuliah <em>Capstone Project</em> yang
+          dirancang khusus untuk ekosistem akademik Telkom University Jakarta. Sistem ini mengintegrasikan seluruh alur
+          kerja Capstone Project — dari pengumpulan laporan, bimbingan, hingga penilaian — dalam satu platform terpadu.
+        </p>
+
+        <div class="about-grid">
+          <div class="about-card">
+            <div class="about-card-icon">🎯</div>
+            <div class="about-card-title">Visi</div>
+            <div class="about-card-text">Menjadi platform manajemen Capstone Project terbaik yang mendukung kualitas
+              akademik dan kemudahan administrasi di Telkom University Jakarta.</div>
+          </div>
+          <div class="about-card">
+            <div class="about-card-icon">🚀</div>
+            <div class="about-card-title">Misi</div>
+            <div class="about-card-text">Menyediakan sistem terintegrasi yang efisien, transparan, dan mudah digunakan
+              bagi mahasiswa, dosen, dan administrator dalam mengelola proses Capstone Project.</div>
+          </div>
+          <div class="about-card">
+            <div class="about-card-icon">✅</div>
+            <div class="about-card-title">Tujuan</div>
+            <div class="about-card-text">Mempermudah pengelolaan laporan, penilaian, dan koordinasi antara mahasiswa dan
+              dosen dalam matakuliah Capstone Project secara digital.</div>
+          </div>
+          <div class="about-card">
+            <div class="about-card-icon">⚙️</div>
+            <div class="about-card-title">Fungsi Utama</div>
+            <div class="about-card-text">Upload laporan, penilaian terstruktur, peer review, pemantauan progress,
+              manajemen pengguna, dan rekap nilai akhir.</div>
+          </div>
+        </div>
+
+        <div class="makers-section">
+          <div class="makers-title">Tim Pembuat CAPSY</div>
+          <div class="maker-card">
+            <div class="maker-avatar">AZ</div>
+            <div>
+              <div class="maker-name">Aabid Ahmad Zubaid</div>
+              <span class="maker-role-tag">Developer & Designer</span>
+            </div>
+          </div>
+          <div class="maker-card">
+            <div class="maker-avatar">ZA</div>
+            <div>
+              <div class="maker-name">Muhammad Zidan Alfarizi</div>
+              <span class="maker-role-tag">Developer</span>
+            </div>
+          </div>
+          <div class="maker-card">
+            <div class="maker-avatar pic">DS</div>
+            <div>
+              <div class="maker-name">Deki Satria, S.T., M.Kom.</div>
+              <span class="maker-role-tag">Dosen PIC / Pembimbing</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ MODAL: KELUHAN ════════════════════════════════════════ -->
+  <div class="modal-overlay" id="modal-keluhan">
+    <div class="modal-backdrop" onclick="closeModal('modal-keluhan')"></div>
+    <div class="modal-box">
+      <div class="modal-header">
+        <div class="modal-header-content">
+          <div class="modal-header-icon">💬</div>
+          <div>
+            <div class="modal-title-text">Keluhan & Feedback</div>
+            <div class="modal-subtitle-text">Bantu kami tingkatkan CAPSY</div>
+          </div>
+          <button class="modal-close-btn" onclick="closeModal('modal-keluhan')">✕</button>
+        </div>
+      </div>
+      <div class="modal-body" id="feedback-modal-body">
+        <div class="f-group">
+          <label class="f-label">Rating Pengalaman Anda <span class="req">*</span></label>
+          <div class="feedback-stars" id="feedback-stars">
+            <button type="button" class="star-btn" onclick="setRating(1)" data-rating="1">⭐</button>
+            <button type="button" class="star-btn" onclick="setRating(2)" data-rating="2">⭐</button>
+            <button type="button" class="star-btn" onclick="setRating(3)" data-rating="3">⭐</button>
+            <button type="button" class="star-btn" onclick="setRating(4)" data-rating="4">⭐</button>
+            <button type="button" class="star-btn" onclick="setRating(5)" data-rating="5">⭐</button>
+          </div>
+        </div>
+        <div class="f-group">
+          <label class="f-label" for="feedback-name">Nama Anda <span class="req">*</span></label>
+          <input type="text" id="feedback-name" class="f-input" placeholder="Masukkan nama Anda">
+        </div>
+        <div class="f-group">
+          <label class="f-label" for="feedback-role">Role / Peran</label>
+          <select id="feedback-role" class="f-input">
+            <option value="">-- Pilih peran --</option>
+            <option value="mahasiswa">Mahasiswa</option>
+            <option value="dosen_pembimbing">Dosen Pembimbing</option>
+            <option value="dosen_penguji">Dosen Penguji</option>
+            <option value="admin">Administrator</option>
+            <option value="other">Lainnya</option>
+          </select>
+        </div>
+        <div class="f-group">
+          <label class="f-label" for="feedback-text">Keluhan / Saran <span class="req">*</span></label>
+          <textarea id="feedback-text" class="f-input" rows="5"
+            placeholder="Tuliskan keluhan, saran, atau masukan Anda untuk CAPSY..."
+            style="resize:vertical; line-height:1.6"></textarea>
+        </div>
+        <button class="btn-login-submit" onclick="submitFeedback()" style="margin-top:4px">
+          <span>📤 Kirim Feedback</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ MODAL: BANTUAN ════════════════════════════════════════ -->
+  <div class="modal-overlay" id="modal-bantuan">
+    <div class="modal-backdrop" onclick="closeModal('modal-bantuan')"></div>
+    <div class="modal-box">
+      <div class="modal-header">
+        <div class="modal-header-content">
+          <div class="modal-header-icon">❓</div>
+          <div>
+            <div class="modal-title-text">Bantuan & FAQ</div>
+            <div class="modal-subtitle-text">Pertanyaan yang sering ditanyakan</div>
+          </div>
+          <button class="modal-close-btn" onclick="closeModal('modal-bantuan')">✕</button>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="faq-item" id="faq-1">
+          <div class="faq-q" onclick="toggleFaq('faq-1')">
+            <span>🔐 Bagaimana cara login ke CAPSY?</span>
+            <span class="faq-chevron">▼</span>
+          </div>
+          <div class="faq-a">Klik tombol <strong>"Masuk"</strong> di pojok kanan atas, pilih role Anda (Mahasiswa /
+            Dosen Pembimbing / Dosen Penguji / Administrator), lalu masukkan email institusi dan password yang diberikan
+            oleh Administrator.</div>
+        </div>
+        <div class="faq-item" id="faq-2">
+          <div class="faq-q" onclick="toggleFaq('faq-2')">
+            <span>📄 Bagaimana cara mengupload laporan Capstone Project?</span>
+            <span class="faq-chevron">▼</span>
+          </div>
+          <div class="faq-a">Setelah login sebagai Mahasiswa, buka menu <strong>Laporan</strong> di sidebar dashboard.
+            Klik tombol "Upload Laporan", pilih file, dan isi informasi yang diperlukan. Laporan akan dikirim ke Dosen
+            Pembimbing untuk dikonfirmasi.</div>
+        </div>
+        <div class="faq-item" id="faq-3">
+          <div class="faq-q" onclick="toggleFaq('faq-3')">
+            <span>👨‍🏫 Apa yang bisa dilakukan Dosen Pembimbing di CAPSY?</span>
+            <span class="faq-chevron">▼</span>
+          </div>
+          <div class="faq-a">Dosen Pembimbing dapat memantau progress laporan mahasiswa bimbingan, memberikan konfirmasi
+            kelayakan laporan, serta melihat riwayat laporan yang telah diajukan.</div>
+        </div>
+        <div class="faq-item" id="faq-4">
+          <div class="faq-q" onclick="toggleFaq('faq-4')">
+            <span>📋 Bagaimana sistem penilaian bekerja?</span>
+            <span class="faq-chevron">▼</span>
+          </div>
+          <div class="faq-a">Penilaian dilakukan oleh Dosen Penguji berdasarkan kriteria yang ditetapkan oleh Admin.
+            Nilai terdiri dari beberapa komponen yang dijumlahkan untuk mendapatkan nilai akhir Capstone Project.</div>
+        </div>
+        <div class="faq-item" id="faq-5">
+          <div class="faq-q" onclick="toggleFaq('faq-5')">
+            <span>🔑 Lupa password, apa yang harus dilakukan?</span>
+            <span class="faq-chevron">▼</span>
+          </div>
+          <div class="faq-a">Hubungi Administrator sistem CAPSY untuk melakukan reset password. Admin dapat mengubah
+            password melalui menu Manajemen Pengguna di dashboard Administrator.</div>
+        </div>
+        <div class="faq-item" id="faq-6">
+          <div class="faq-q" onclick="toggleFaq('faq-6')">
+            <span>📊 Kapan nilai Capstone Project bisa dilihat?</span>
+            <span class="faq-chevron">▼</span>
+          </div>
+          <div class="faq-a">Nilai dapat dilihat setelah Dosen Penguji menginput penilaian dan Admin memvalidasi nilai
+            akhir. Mahasiswa dapat melihat rekap nilai di menu <strong>Nilai</strong> pada dashboard Mahasiswa.</div>
+        </div>
+        <div class="faq-item" id="faq-7">
+          <div class="faq-q" onclick="toggleFaq('faq-7')">
+            <span>⚙️ Siapa yang bisa menambah pengguna baru?</span>
+            <span class="faq-chevron">▼</span>
+          </div>
+          <div class="faq-a">Hanya Administrator yang dapat menambah, mengubah, atau menghapus pengguna. Admin juga yang
+            menentukan penugasan dosen pembimbing dan dosen penguji untuk setiap mahasiswa.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ MODAL: COMING SOON ════════════════════════════════════ -->
+  <div class="modal-overlay" id="modal-comingsoon">
+    <div class="modal-backdrop" onclick="closeModal('modal-comingsoon')"></div>
+    <div class="modal-box">
+      <div class="modal-header">
+        <div class="modal-header-content">
+          <div class="modal-header-icon">🚀</div>
+          <div>
+            <div class="modal-title-text">Coming Soon</div>
+            <div class="modal-subtitle-text">Fitur dalam pengembangan</div>
+          </div>
+          <button class="modal-close-btn" onclick="closeModal('modal-comingsoon')">✕</button>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="coming-soon-content">
+          <div class="cs-icon">🛠️</div>
+          <div class="cs-title">Fitur Baru Segera Hadir!</div>
+          <p class="cs-sub">Tim pengembang CAPSY sedang bekerja keras menghadirkan fitur-fitur unggulan yang akan
+            membuat pengalaman Capstone Project semakin mudah dan efisien.</p>
+          <div class="cs-features">
+            <div class="cs-feat-item">
+              <div class="cs-feat-dot"></div>Notifikasi real-time via email
+            </div>
+            <div class="cs-feat-item">
+              <div class="cs-feat-dot"></div>Ekspor laporan ke PDF / Excel
+            </div>
+            <div class="cs-feat-item">
+              <div class="cs-feat-dot"></div>Mode tampilan gelap (Dark Mode)
+            </div>
+            <div class="cs-feat-item">
+              <div class="cs-feat-dot"></div>Kalender jadwal sidang interaktif
+            </div>
+            <div class="cs-feat-item">
+              <div class="cs-feat-dot"></div>Chat antara mahasiswa & dosen
+            </div>
+            <div class="cs-feat-item">
+              <div class="cs-feat-dot"></div>Analitik penilaian & statistik
+            </div>
+            <div class="cs-feat-item">
+              <div class="cs-feat-dot"></div>Aplikasi mobile (Android & iOS)
+            </div>
+            <div class="cs-feat-item">
+              <div class="cs-feat-dot"></div>Integrasi dengan sistem akademik
+            </div>
+          </div>
+          <p style="font-size:12.5px; color:var(--gray-500);">Pantau terus perkembangan CAPSY! Fitur-fitur di atas akan
+            segera dirilis pada versi berikutnya.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/data.js?v=2"></script>
+  <script src="js/auth.js?v=2"></script>
+  <script>
+    /* ── Role Config ─────────────────────────────────────────── */
+    const ROLES = {
+      mahasiswa: {
+        label: 'Mahasiswa',
+        icon: '🎓',
+        greeting: 'Halo, Mahasiswa!',
+        sub: 'Masuk untuk mengelola laporan capstone project, mengisi peer review, dan melihat nilai Anda.',
+        demos: [
+          { name: 'Budi Santoso', initials: 'BS', email: 'budi@tuj.ac.id', pw: 'mhs123' },
+          { name: 'Sari Dewi', initials: 'SD', email: 'sari@tuj.ac.id', pw: 'mhs123' },
+          { name: 'Rizki Pratama', initials: 'RP', email: 'rizki@tuj.ac.id', pw: 'mhs123' },
+        ]
+      },
+      dosen_pembimbing: {
+        label: 'Dosen Pembimbing',
+        icon: '👨‍🏫',
+        greeting: 'Selamat Datang, Dosen Pembimbing!',
+        sub: 'Pantau perkembangan laporan dan konfirmasi kelayakan laporan mahasiswa bimbingan Anda.',
+        demos: [
+          { name: 'Dr. Agus Wahyudi, M.Kom.', initials: 'AW', email: 'pb.agus@tuj.ac.id', pw: 'dosen123' },
+          { name: 'Dr. Lina Kartika, S.T., M.T.', initials: 'LK', email: 'pb.lina@tuj.ac.id', pw: 'dosen123' },
+        ]
+      },
+      dosen_penguji: {
+        label: 'Dosen Penguji',
+        icon: '📋',
+        greeting: 'Selamat Datang, Dosen Penguji!',
+        sub: 'Input penilaian dan lihat laporan mahasiswa yang ditugaskan untuk Anda uji.',
+        demos: [
+          { name: 'Prof. Dr. Rudi Hermawan, M.Sc.', initials: 'RH', email: 'pj.rudi@tuj.ac.id', pw: 'dosen123' },
+          { name: 'Dr. Yuni Astuti, M.Kom.', initials: 'YA', email: 'pj.yuni@tuj.ac.id', pw: 'dosen123' },
+        ]
+      },
+      admin: {
+        label: 'Administrator',
+        icon: '⚙️',
+        greeting: 'Selamat Datang, Admin!',
+        sub: 'Kelola seluruh data sistem: penugasan dosen, kriteria penilaian, dan manajemen pengguna.',
+        demos: [
+          { name: 'Admin Sistem', initials: 'AS', email: 'admin@tuj.ac.id', pw: 'admin123' },
+        ]
+      }
+    };
+
+    let activeRole = null;
+    let feedbackRating = 0;
+
+    /* ── Init ──────────────────────────────────────────────────── */
+    document.addEventListener('DOMContentLoaded', () => {
+      DB.load();
+
+      // Auto-redirect if session exists
+      const s = Auth.getSession();
+      if (s) redirectByRole(s.role);
+
+      // Update semester badge from DB
+      const periode = DataService.getPeriode();
+      if (periode && periode.nama) {
+        const badge = document.getElementById('hero-semester-badge');
+        const text = document.getElementById('info-semester-text');
+        if (badge) badge.textContent = `${periode.nama} · Aktif`;
+        if (text) text.textContent = periode.nama;
+      }
+    });
+
+    // Keyboard support for feature cards
+    document.querySelectorAll('.feature-card, .role-card').forEach(c => {
+      c.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); c.click(); }
+      });
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', e => {
+      const trigger = document.getElementById('login-trigger');
+      if (trigger && !trigger.contains(e.target)) {
+        trigger.classList.remove('open');
+      }
+      const locTrigger = document.getElementById('location-trigger');
+      if (locTrigger && !locTrigger.contains(e.target)) {
+        locTrigger.classList.remove('open');
+      }
+    });
+
+    /* ── Dropdown ──────────────────────────────────────────────── */
+    function toggleLoginDropdown() {
+      const t = document.getElementById('login-trigger');
+      t.classList.toggle('open');
+    }
+
+    function toggleLocationDropdown() {
+      const t = document.getElementById('location-trigger');
+      t.classList.toggle('open');
+    }
+
+    function closeDropdown() {
+      document.getElementById('login-trigger').classList.remove('open');
+    }
+
+    /* ── Modal ─────────────────────────────────────────────────── */
+    function openModal(id) {
+      document.getElementById(id).classList.add('visible');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal(id) {
+      document.getElementById(id).classList.remove('visible');
+      document.body.style.overflow = '';
+    }
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') {
+        ['modal-tentang', 'modal-keluhan', 'modal-bantuan', 'modal-comingsoon'].forEach(closeModal);
+        closeLogin();
+      }
+    });
+
+    /* ── FAQ ────────────────────────────────────────────────────── */
+    function toggleFaq(id) {
+      const item = document.getElementById(id);
+      item.classList.toggle('open');
+    }
+
+    /* ── Feedback Rating ─────────────────────────────────────────── */
+    function setRating(r) {
+      feedbackRating = r;
+      document.querySelectorAll('.star-btn').forEach((btn, i) => {
+        btn.classList.toggle('active', i < r);
+      });
+    }
+
+    function submitFeedback() {
+      const name = document.getElementById('feedback-name').value.trim();
+      const text = document.getElementById('feedback-text').value.trim();
+      if (!name || !text || !feedbackRating) {
+        showToast('Lengkapi nama, rating, dan feedback Anda', 'warning');
+        return;
+      }
+      // Replace body with thank you
+      document.getElementById('feedback-modal-body').innerHTML = `
+        <div class="feedback-sent">
+          <div class="feedback-sent-icon">🎉</div>
+          <div class="feedback-sent-title">Terima Kasih, ${name}!</div>
+          <p class="feedback-sent-sub">Feedback Anda telah diterima dan akan kami tindaklanjuti untuk peningkatan CAPSY. Rating: ${'⭐'.repeat(feedbackRating)}</p>
+        </div>
+      `;
+      feedbackRating = 0;
+    }
+
+    /* ── Login Panel ─────────────────────────────────────────────── */
+    function openLogin(role) {
+      activeRole = role;
+      const cfg = ROLES[role];
+
+      document.getElementById('panel-icon').textContent = cfg.icon;
+      document.getElementById('panel-role-name').textContent = cfg.label;
+      document.getElementById('panel-greeting-h').textContent = cfg.greeting;
+      document.getElementById('panel-greeting-p').textContent = cfg.sub;
+
+      document.getElementById('f-email').value = '';
+      document.getElementById('f-password').value = '';
+      document.getElementById('f-error').classList.remove('show');
+      const btn = document.getElementById('btn-submit');
+      btn.disabled = false;
+      btn.innerHTML = '<span>Masuk ke CAPSY</span><span>→</span>';
+      btn.style.background = '';
+
+      document.getElementById('demo-list').innerHTML = cfg.demos.map(d => `
+        <button type="button" class="demo-btn" onclick="fillDemo('${d.email}','${d.pw}')">
+          <div class="demo-btn-avatar">${d.initials}</div>
+          <div>
+            <div class="demo-btn-name">${d.name}</div>
+            <div class="demo-btn-email">${d.email}</div>
+          </div>
+          <span class="demo-btn-chip">Autofill</span>
+        </button>
+      `).join('');
+
+      document.body.style.overflow = 'hidden';
+      document.getElementById('login-overlay').classList.add('visible');
+      setTimeout(() => document.getElementById('f-email').focus(), 400);
+    }
+
+    function closeLogin() {
+      document.getElementById('login-overlay').classList.remove('visible');
+      document.body.style.overflow = '';
+      activeRole = null;
+    }
+
+    function togglePw() {
+      const inp = document.getElementById('f-password');
+      const btn = document.getElementById('pw-toggle');
+      inp.type = inp.type === 'password' ? 'text' : 'password';
+      btn.textContent = inp.type === 'password' ? '👁' : '🙈';
+    }
+
+    function fillDemo(email, pw) {
+      document.getElementById('f-email').value = email;
+      document.getElementById('f-password').value = pw;
+      document.querySelectorAll('.demo-btn').forEach(b => {
+        b.style.transition = 'all 0.2s';
+        if (b.getAttribute('onclick').includes(email)) {
+          b.style.background = '#FFF0F0';
+          b.style.borderColor = 'rgba(227,30,36,0.4)';
+          setTimeout(() => { b.style.background = ''; b.style.borderColor = ''; }, 1200);
+        }
+      });
+    }
+
+    function handleLogin(e) {
+      e.preventDefault();
+      const email = document.getElementById('f-email').value.trim();
+      const password = document.getElementById('f-password').value;
+      const btn = document.getElementById('btn-submit');
+      const errEl = document.getElementById('f-error');
+      const errMsg = document.getElementById('f-error-msg');
+
+      btn.disabled = true;
+      btn.innerHTML = '<span style="opacity:.7">Memproses...</span>';
+      errEl.classList.remove('show');
+
+      setTimeout(() => {
+        const result = Auth.login(email, password);
+
+        if (!result.success) {
+          errMsg.textContent = result.message;
+          errEl.classList.add('show');
+          btn.disabled = false;
+          btn.innerHTML = '<span>Masuk ke CAPSY</span><span>→</span>';
+          return;
+        }
+
+        if (activeRole && result.user.role !== activeRole) {
+          sessionStorage.removeItem('capstone_session');
+          errMsg.textContent = `Akun ini terdaftar sebagai ${getRoleLabel(result.user.role)}, bukan ${ROLES[activeRole]?.label}. Silakan pilih role yang sesuai.`;
+          errEl.classList.add('show');
+          btn.disabled = false;
+          btn.innerHTML = '<span>Masuk ke CAPSY</span><span>→</span>';
+          return;
+        }
+
+        btn.innerHTML = '<span>✓ Berhasil!</span>';
+        btn.style.background = 'linear-gradient(135deg, #16a34a, #15803d)';
+        setTimeout(() => redirectByRole(result.user.role), 700);
+
+      }, 500);
+    }
+
+    function redirectByRole(role) {
+      const map = {
+        admin: 'pages/dashboard-admin.html',
+        mahasiswa: 'pages/dashboard-mahasiswa.html',
+        dosen_pembimbing: 'pages/dashboard-dosen-pembimbing.html',
+        dosen_penguji: 'pages/dashboard-dosen-penguji.html'
+      };
+      window.location.href = map[role] || 'index.html';
+    }
+
+    function getRoleLabel(role) {
+      return { admin: 'Administrator', mahasiswa: 'Mahasiswa', dosen_pembimbing: 'Dosen Pembimbing', dosen_penguji: 'Dosen Penguji' }[role] || role;
+    }
+
+    /* Toast helper */
+    function showToast(msg, type = 'info') {
+      const c = document.getElementById('toast-container');
+      if (!c) return;
+      const t = document.createElement('div');
+      t.className = `toast toast-${type}`;
+      t.innerHTML = `<span>${{ success: '✅', error: '❌', warning: '⚠️', info: 'ℹ️' }[type] || 'ℹ️'}</span><span>${msg}</span>`;
+      c.appendChild(t);
+      setTimeout(() => { t.style.opacity = '0'; t.style.transform = 'translateX(100%)'; t.style.transition = 'all .3s ease'; setTimeout(() => t.remove(), 300); }, 3200);
+    }
+  </script>
+</body>
+
+</html>
